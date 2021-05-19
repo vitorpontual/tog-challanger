@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+   databse:
+      image: postgres
+      container_name: challange 
+      restart: always
+      ports:
+         - 7060:5432
+      environment:
+         - POSTGRES_USER=docker
+         - POSTGRES_PASSWORD=tog
+         - POSTGRES_DB=tog_db
+      volumes:
+         - pgdata:/data/postgres
+   
+   redis:
+      image: redis:alpine
+      restart: always
+      ports:
+         - 6379:6379
+
+volumes:
+   pgdata:
+      driver: local
