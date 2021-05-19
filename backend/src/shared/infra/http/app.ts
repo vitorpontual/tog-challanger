@@ -3,10 +3,10 @@ import "express-async-errors";
 import "dotenv/config"
 import express, { NextFunction, Request, Response } from "express";
 
-import "../backend/src/shared/container"
+import "@shared/container"
 import {router} from './routes';
 import { createConnection } from 'typeorm';
-import { AppError } from '../backend/src/shared/errors/AppError';
+import { AppError } from '@shared/errors/AppError';
 
 console.log("Open Database")
 createConnection();

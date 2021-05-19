@@ -50,9 +50,7 @@ export default class AuthenticateUserUseCase {
       expiresIn
     });
 
-    return {
-      user,
-      token
-    }
+
+    return {user, token}
   }
 }
