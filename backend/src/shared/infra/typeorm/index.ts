@@ -1,6 +1,6 @@
 import { Connection, createConnection, getConnectionOptions, } from "typeorm";
 
-export default async (host = "12.0.0.3"): Promise<Connection> => {
+export default async (host = "localhost"): Promise<Connection> => {
   const defaultOptions = await getConnectionOptions();
 
   return createConnection(

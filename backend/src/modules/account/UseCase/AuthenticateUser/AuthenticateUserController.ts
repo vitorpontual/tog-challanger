@@ -4,8 +4,6 @@ import { classToClass} from "class-transformer"
 
 import AuthenticateUserUseCase from "./AuthenticateUserUseCase";
 
-
-
 export default class AuthenticateUserController{
 
   async handle(request: Request, response: Response): Promise<Response> {

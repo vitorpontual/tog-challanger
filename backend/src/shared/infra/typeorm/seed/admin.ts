@@ -8,7 +8,7 @@ async function create(){
 
    const id = uuid();
 
-   const password = await hash('admin', 8)
+   const password = await hash('opa', 8)
 
    await connection.query(`
 			  INSERT INTO users(
@@ -17,7 +17,7 @@ async function create(){
 			     password,
 			     created_at
 			  ) VALUES (
-			  '${id}', 'admin', '${password}', 'now')
+			  '${id}', 'admin@admin.com', '${password}', 'now')
 			  `)
 }
 
