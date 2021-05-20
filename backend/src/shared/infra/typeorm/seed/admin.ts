@@ -13,11 +13,14 @@ async function create(){
    await connection.query(`
 			  INSERT INTO users(
 			     id,
+					 name,
 			     email,
 			     password,
-			     created_at
+					 "isadmin",
+			     created_at,
+					 updated_at
 			  ) VALUES (
-			  '${id}', 'admin@admin.com', '${password}', 'now')
+			  '${id}', 'admin','admin@admin.com', '${password}', 'true', 'now', 'now')
 			  `)
 }
 
