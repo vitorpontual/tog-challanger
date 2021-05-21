@@ -2,12 +2,12 @@ import { Router } from "express";
 
 import { userRoutes as users } from "./users.router"
 import { sessionRouter as sessions} from './authenticate.routes'
-import { readRoute as read} from './read.routes'
+import { articleRoute as articles} from './article.routes'
 
 const router = Router();
 
 router.use("/users", users)
-router.use("/reading", read)
+router.use("/articles", articles)
 
 router.use("/", sessions)
 

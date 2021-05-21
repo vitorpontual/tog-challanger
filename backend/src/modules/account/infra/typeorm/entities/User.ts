@@ -1,6 +1,7 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, OneToMany, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { Exclude, Expose } from "class-transformer";
 import { v4 as uuid} from "uuid";
+import { Article } from "@modules/blog/infra/typeorm/entities/Article";
 
 
 @Entity("users")

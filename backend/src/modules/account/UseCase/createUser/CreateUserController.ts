@@ -5,13 +5,13 @@ import { CreateUserUseCase } from "./CreateUserUseCase";
 
 export class CreateUserController {
   async handle(request: Request, response: Response): Promise<Response>{
-    const { email, password} = request.body
+    const { email, password, name} = request.body
 
     
     
     const createUserUseCase = container.resolve(CreateUserUseCase)
     
-    await createUserUseCase.execute({email, password})
+    await createUserUseCase.execute({email, password, name})
 
     return response.status(201).send()
   }

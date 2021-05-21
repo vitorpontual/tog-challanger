@@ -1,9 +1,8 @@
-import { User } from "@modules/account/infra/typeorm/entities/User";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuid } from 'uuid'
 
-@Entity("reads")
-export class Read {
+@Entity("articles")
+export class Article {
 
   @PrimaryColumn()
   id?: string;
@@ -14,12 +13,14 @@ export class Read {
   @Column()
   user_id: string;
 
-  @ManyToOne(() => User)
-  @JoinColumn({ name: "user_id"})
-  user: User;
-
   @Column()
   body_text: string;
+
+  @Column()
+  price: number;
+
+  @Column()
+  tags: string;
 
   @Column()
   image: string;
