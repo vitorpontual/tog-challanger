@@ -1,3 +1,4 @@
+import { ICreateUserDTO } from "../DTO/ICreateUserDTO";
 import { User } from "../infra/typeorm/entities/User";
 
 export interface IUsersRepository {

@@ -12,11 +12,13 @@ export class ReadRepository implements IReadRepository{
     this.repository = getRepository(Read)
   }
   async create(data: ICreateReadDTO): Promise<void> {
-    const read = await this.repository.create(data)
+    const read = this.repository.create(data)
 
     await this.repository.save(read)
   }
-  findById(id: string): Promise<Read> {
-    throw new Error("Method not implemented.");
+  async findById(id: string): Promise<Read> {
+    const read = await this.repository.findOne(id)
+
+    return read;
   }
 }

@@ -1,7 +1,8 @@
-import { Column, CreateDateColumn, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { User } from "@modules/account/infra/typeorm/entities/User";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuid } from 'uuid'
 
-
+@Entity("reads")
 export class Read {
 
   @PrimaryColumn()
@@ -11,7 +12,17 @@ export class Read {
   title: string;
 
   @Column()
+  user_id: string;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: "user_id"})
+  user: User;
+
+  @Column()
   body_text: string;
+
+  @Column()
+  image: string;
 
   @CreateDateColumn()
   created_at: Date;

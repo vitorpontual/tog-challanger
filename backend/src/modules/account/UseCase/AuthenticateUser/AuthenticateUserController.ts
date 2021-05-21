@@ -9,6 +9,7 @@ export default class AuthenticateUserController{
   async handle(request: Request, response: Response): Promise<Response> {
     const { email, password} = request.body;
 
+    
     const authenticateUser = container.resolve(AuthenticateUserUseCase)
 
     const { user, token } = await  authenticateUser.execute({ 

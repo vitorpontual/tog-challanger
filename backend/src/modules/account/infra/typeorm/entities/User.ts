@@ -21,7 +21,7 @@ export class User{
 
    @Exclude()
    @Column()
-   isAdmin: boolean;
+   isadmin: boolean;
 
    @Column()
    avatar: string;
