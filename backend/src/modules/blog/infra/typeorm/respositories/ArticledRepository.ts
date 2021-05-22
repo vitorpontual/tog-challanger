@@ -23,7 +23,7 @@ export class ArticleRepository  implements IArticleRepository{
   } 
   
   async findById(id: string): Promise<Article> {
-    const article = await this.repository.findOne({user_id: id})
+    const article = await this.repository.findOne(id)
 
 
     return article;
@@ -33,5 +33,11 @@ export class ArticleRepository  implements IArticleRepository{
     const articles = await this.repository.find({where: {user_id}})
 
     return articles
+  }
+
+  async editArticle(data: ICreateArticleDTO): Promise<void> {
+    const article = this.repository.create({...data})
+
+
   }
 }

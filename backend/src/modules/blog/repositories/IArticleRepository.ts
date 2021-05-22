@@ -7,4 +7,5 @@ export interface IArticleRepository {
   findById(id: string): Promise<Article>;
   findAll(): Promise<Article[]>
   findArticleByUserId(user_id: string): Promise<Article[]>
+  editArticle(data: ICreateArticleDTO): Promise<void>
 }
