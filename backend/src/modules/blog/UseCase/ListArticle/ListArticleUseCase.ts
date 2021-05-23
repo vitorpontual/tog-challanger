@@ -1,7 +1,19 @@
-import { IUsersRepository } from "@modules/account/repositories/IUsersRepository";
 import { Article } from "@modules/blog/infra/typeorm/entities/Article";
 import { IArticleRepository } from "@modules/blog/repositories/IArticleRepository";
+import articleViews from "@modules/blog/views/articleViews";
 import { inject, injectable } from "tsyringe";
+
+interface IResponse {
+  id: string; 
+  title: string;
+  body_text: string;
+  price: number;
+  tags: string[];
+  user: {
+    name: string;
+    avatar: string;
+  };
+}
 
 @injectable()
 export class ListArticleUseCase {
@@ -10,9 +22,11 @@ export class ListArticleUseCase {
     private articleRepository: IArticleRepository
   ){}
 
-  async execute(): Promise<Article[]> {
+  async execute(): Promise<IResponse[]> {
     const article = await this.articleRepository.findAll()
 
-    return article
+    const articles = articleViews.renderMany(article)
+    
+    return articles
   }
 }

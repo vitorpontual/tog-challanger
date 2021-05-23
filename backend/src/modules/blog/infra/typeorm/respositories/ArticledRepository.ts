@@ -19,7 +19,7 @@ export class ArticleRepository  implements IArticleRepository{
   }
 1
   async findAll(): Promise<Article[]> {
-    return this.repository.find();
+    return this.repository.find({ relations: ['user']});
   } 
   
   async findById(id: string): Promise<Article> {

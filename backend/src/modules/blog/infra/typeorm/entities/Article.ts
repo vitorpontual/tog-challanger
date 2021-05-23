@@ -1,3 +1,4 @@
+import { User } from "@modules/account/infra/typeorm/entities/User";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuid } from 'uuid'
 
@@ -12,6 +13,10 @@ export class Article {
 
   @Column()
   user_id: string;
+
+  @ManyToOne(() => User)
+  @JoinColumn({name: "user_id"})
+  user: User;
 
   @Column()
   body_text: string;

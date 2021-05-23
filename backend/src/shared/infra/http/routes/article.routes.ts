@@ -18,7 +18,7 @@ const listUserArticleController = new ListUserArticleController()
 const editArticleController = new EditArticleController()
 
 articleRoute.get("/user", ensureAuthenticated, listUserArticleController.handle)
-articleRoute.get("/", ensureAuthenticated, listArticleController.handle )
+articleRoute.get("/", listArticleController.handle )
 articleRoute.post("/", ensureAuthenticated, createReadController.handle )
 articleRoute.put("/:id/edit", ensureAuthenticated, editArticleController.handle)
 

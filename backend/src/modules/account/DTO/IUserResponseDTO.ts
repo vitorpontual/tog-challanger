@@ -6,5 +6,4 @@ export interface IUserResponseDTO{
   email: string;
   avatar: string;
   avatar_url(): string;
-  article: Article[];
 }
