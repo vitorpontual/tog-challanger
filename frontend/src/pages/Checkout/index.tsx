@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useCallback, useRef } from "react";
 import { Delete, LocalMall } from "@material-ui/icons"
 import { Container, Card, Header, Aside } from "./styles";
+import { useHistory } from "react-router";
+import { Form } from "@unform/web";
 
 
 const Checkout: React.FC = () => {
-
-  return (
+   return (
     <Container>
       <Card>
         <Header>
@@ -53,24 +54,26 @@ const Checkout: React.FC = () => {
       </Card>
 
       <Aside>
-        <div className="container">
-          <h1>Resume</h1>
-          <div className="items">
-            <input type="text" placeholder="Discount coupon" />
-            <div className="subtotal">
-              <div className="title">Subtotal</div>
-              <div className="value">R$10.00</div>
-            </div>
-            <div className="separator"></div>
-            <div className="total">
-              <div className="title">Total</div>
-              <div className="value">R$10.00</div>
-            </div>
+        {/* <Form ref={} onSubmit={}> */}
+          <div className="container">
+            <h1>Resume</h1>
+            <div className="items">
+              <input type="text" name='discount' placeholder="Discount coupon" />
+              <div className="subtotal">
+                <div className="title">Subtotal</div>
+                <div className="value">R$10.00</div>
+              </div>
+              <div className="separator"></div>
+              <div className="total">
+                <div className="title">Total</div>
+                <div className="value">R$10.00</div>
+              </div>
 
-            <button className="button" type='submit'>CHECKOUT</button>
-            <a href="/" className="button keep">KEEP BUYING</a>
+              <button className="button" type='submit'>CHECKOUT</button>
+              <a href="/" className="button keep">KEEP BUYING</a>
+            </div>
           </div>
-        </div>
+        {/* </Form> */}
       </Aside>
 
     </Container>
