@@ -8,10 +8,17 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html, body{
+    min-height: 100vh;
+  }
+
   body{
     background-color: #000
     color: #fff;
     -webkit-font-smoothing: antialiased;
+
+    display: flex;
+    flex-direction: column;
   }
 
   body, input, button {

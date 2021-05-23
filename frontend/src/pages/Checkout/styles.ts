@@ -45,7 +45,11 @@ export const Header = styled.div`
     height: 50px;
 
     border-radius: 50%;
+  }
 
+  a {
+    text-decoration: none;
+    color: black;
   }
 
   nav .cart svg{ 

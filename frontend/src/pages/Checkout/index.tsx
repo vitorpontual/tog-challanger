@@ -3,16 +3,19 @@ import { Delete, LocalMall } from "@material-ui/icons"
 import { Container, Card, Header, Aside } from "./styles";
 import { useHistory } from "react-router";
 import { Form } from "@unform/web";
+import { Link } from "react-router-dom";
 
 
 const Checkout: React.FC = () => {
+
+
    return (
     <Container>
       <Card>
         <Header>
           <div className="container">
             <div className="logo">
-              <h1>Tog.design</h1>
+              <Link to="/"><h1>Tog.design</h1></Link>
             </div>
 
             <nav>
