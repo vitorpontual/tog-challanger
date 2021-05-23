@@ -190,3 +190,6 @@ right: 110px;
 }
 `
 
+export const Modal = styled.div`
+  
+`

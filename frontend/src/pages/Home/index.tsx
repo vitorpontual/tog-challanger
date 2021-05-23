@@ -1,9 +1,9 @@
 import { LocalMall } from "@material-ui/icons";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import api from "../../services/api";
-import { Content } from "../SignIn/styles";
 
+import api from "../../services/api";
+import Modal from "../../components/Modal"
 import { Container, Header, Nav, Cards, Card, Aside, Contents} from './styles'
 
 
@@ -24,6 +24,8 @@ interface Article {
 
 const Home: React.FC = () => {
 
+  const modalRef = useRef();
+
   const [articles, setArticles] = useState<Article[]>([]);
 
   useEffect(() => {
@@ -31,6 +33,7 @@ const Home: React.FC = () => {
       setArticles(response.data);
     })
   }, [])
+
 
 
 
@@ -51,7 +54,7 @@ const Home: React.FC = () => {
         <Cards>
           {articles.map(article => {
             return (
-              <Card id={article.id}>
+              <Card id={article.id} onClick={() => modalRef.current.open()}>
                 <div className="logo">
                   <img className="title-img" src={article.image} alt={article.title} />
 
@@ -76,6 +79,9 @@ const Home: React.FC = () => {
                     </div>
                   </div>
                 </div>
+                <Modal ref={modalRef}>
+                </Modal>
+  
               </Card>
             )
           })}
