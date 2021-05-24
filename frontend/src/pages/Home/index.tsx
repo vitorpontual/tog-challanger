@@ -1,10 +1,10 @@
 import { LocalMall } from "@material-ui/icons";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+import ReactModal from "react-modal";
 import { Link } from "react-router-dom";
 
 import api from "../../services/api";
-import Modal from "../../components/Modal"
-import { Container, Header, Nav, Cards, Card, Aside, Contents} from './styles'
+import { Container, Header, Nav, Cards, Card, Aside, Contents } from './styles'
 
 
 interface Article {
@@ -18,15 +18,27 @@ interface Article {
     name: string;
     avatar: string;
   };
-
-
 }
+
+
+
 
 const Home: React.FC = () => {
 
-  const modalRef = useRef();
-
   const [articles, setArticles] = useState<Article[]>([]);
+  const [modalIsOpen, setIsOpen] = useState(false)
+
+  function openModal(){
+    setIsOpen(true)
+  }
+
+  function closeModal(){
+   setIsOpen(true)
+  }
+
+
+  
+  
 
   useEffect(() => {
     api.get('articles').then(response => {
@@ -54,7 +66,7 @@ const Home: React.FC = () => {
         <Cards>
           {articles.map(article => {
             return (
-              <Card id={article.id} onClick={() => modalRef.current.open()}>
+              <Card id={article.id} onClick={openModal}>
                 <div className="logo">
                   <img className="title-img" src={article.image} alt={article.title} />
 
@@ -79,12 +91,35 @@ const Home: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <Modal ref={modalRef}>
-                </Modal>
-  
+                <ReactModal id="modal" isOpen={modalIsOpen} onRequestClose={closeModal} shouldCloseOnOverlayClick={true} >
+                  <img src={article.image} alt={article.title} />
+                  <p>{article.body_text}</p>
+                  <div className="footer">
+                    <div className="author">
+                      <img src={article.user.avatar} alt={article.user.name} />
+                      <p>{article.user.name}</p>
+                    </div>
+
+                    <div className="tags">
+                      <h3>Themes</h3>
+                      <div className="tag">
+                        {article.tags.map(map => {
+                          return (
+                            <span>{map}</span>
+                          )
+                        })}
+
+                      </div>
+                    </div>
+                  </div>
+
+
+                </ReactModal>
+
               </Card>
             )
           })}
+          
 
         </Cards>
         <Aside>
