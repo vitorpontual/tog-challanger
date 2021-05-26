@@ -12,7 +12,6 @@ export class ProfileUseCase {
 
   async execute(id: string): Promise<UserMap> {
     const user = await this.usersRepository.findById(id)
-    console.log(user)
 
     return UserMap.toDTO(user)
 

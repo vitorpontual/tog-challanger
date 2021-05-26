@@ -6,6 +6,8 @@ import { UsersRepository } from "@modules/account/infra/typeorm/repositories/Use
 import { IUsersRepository } from "@modules/account/repositories/IUsersRepository";
 import { IArticleRepository } from "@modules/blog/repositories/IArticleRepository";
 import { ArticleRepository } from "@modules/blog/infra/typeorm/respositories/ArticledRepository";
+import { IOrdersRepository } from "@modules/orders/repositories/IOrdersRepository";
+import { OrdersRepository } from "@modules/orders/infra/typeorm/repositories/OrdersRepository";
 
 container.registerSingleton<IUsersRepository>(
   "UsersRepository",
@@ -16,3 +18,9 @@ container.registerSingleton<IArticleRepository>(
   "ArticleRepository",
   ArticleRepository
 )
+
+container.registerSingleton<IOrdersRepository>(
+  "OrdersRepository",
+  OrdersRepository
+)
+

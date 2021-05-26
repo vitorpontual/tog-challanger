@@ -1,4 +1,3 @@
-import { Cart } from "@config/cart";
 import { ICreateOrder } from "@modules/orders/dto/ICreateOrder";
 import { IOrdersRepository } from "@modules/orders/repositories/IOrdersRepository";
 import { getRepository, Repository } from "typeorm";
@@ -14,6 +13,8 @@ export class OrdersRepository implements IOrdersRepository {
 
   async create(data: ICreateOrder): Promise<Orders> {
     const order = this.repository.create({...data})
+
+    await this.repository.save(order)
 
     return order
   }
