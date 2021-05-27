@@ -15,7 +15,15 @@ export class ListCartUseCase {
 
     cart = this.cartProvider.init(cart)
 
-    return cart
+    const total = cart.reduce((acc, total) => {
+      return acc + total.price
+    }, 0)
+     
+
+    return {
+      cart,
+      total
+    }
     
 
   }

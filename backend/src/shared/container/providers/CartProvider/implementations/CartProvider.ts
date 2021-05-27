@@ -3,24 +3,37 @@ import { ICartProvider } from "../ICartProvider";
 
 
 export class CartPorvider implements ICartProvider {
-  
-  private article: Article[];
-  private total: number;
+
+  article: Article[];
+  total: number;
+
+  constructor(){
+    this.cart = []
+  }
   
   init(oldCart){
-    console.log(oldCart)
     if(oldCart){
       this.article = oldCart.article
       this.total = oldCart.total
     } else {
       this.article = [];
-      this.total
+      this.total = 0
     }
     
-    return this
+    return this.cart
   }
   addOne(article: any) {
-    throw new Error("Method not implemented.");
+    const novo = new CartPorvider();
+
+    const findId = this.cart.find(item => item.id == article.id)
+
+    if(!findId){
+
+      this.cart.push(article)
+    }
+
+
+    return this
   }
 
 }
