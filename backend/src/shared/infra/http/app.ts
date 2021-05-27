@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import "express-async-errors";
 import "dotenv/config"
+import cookieParser from "cookie-parser"
 import cors from 'cors'
 import express, { NextFunction, Request, Response } from "express";
 
@@ -15,6 +16,7 @@ createConnection();
 const app = express();
 
 app.use(cors())
+app.use(cookieParser())
 app.use(express.json())
 app.use(router)
 

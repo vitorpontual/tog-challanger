@@ -3,26 +3,20 @@ import { ICartProvider } from "@shared/container/providers/CartProvider/ICartPro
 import { inject, injectable } from "tsyringe";
 
 
-interface Cart {
-  items: Article[],
-  total: {
-    price: number
-  }
-}
 
 @injectable()
 export class ListCartUseCase {
-
   constructor(
     @inject("CartProvider")
-    private cartProvider: ICartProvider,
+    private cartProvider: ICartProvider
   ){}
 
-  execute(cart: Cart): Cart{
+  execute(cart) {
 
-    const newCart = this.cartProvider.init(cart)
+    cart = this.cartProvider.init(cart)
 
-    return newCart  
+    return cart
+    
 
   }
 }
