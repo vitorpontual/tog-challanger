@@ -2,7 +2,13 @@ import { Article } from "@modules/blog/infra/typeorm/entities/Article"
 import { ICartProvider } from "../ICartProvider";
 
 
+interface Cart {
+  article: Article[];
+  total: number;
+}
+
 export class CartPorvider implements ICartProvider {
+  private cart: Cart[]
 
   article: Article[];
   total: number;
@@ -33,7 +39,12 @@ export class CartPorvider implements ICartProvider {
     }
 
 
-    return this
+    return this.cart
+  }
+  delete(article_id){
+    const del = this.cart.filter(item => item.id != article_id)
+
+    return del
   }
 
 }
